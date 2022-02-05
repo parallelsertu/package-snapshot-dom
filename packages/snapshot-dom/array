@@ -1,0 +1,7 @@
+const {toJSON} = require("@wildpeaks/snapshot-dom");
+const {removeEmptyAttributes} = require("@wildpeaks/snapshot-dom/removeEmptyAttributes");
+const html = `<img param1 param2="" param3="hello" />`;
+
+const {window} = new JSDOM(`<!DOCTYPE html><html><head></head><body>${html}</body></html>`);
+const snapshot = toJSON(window.document.body);
+removeEmptyAttributes(snapshot);
